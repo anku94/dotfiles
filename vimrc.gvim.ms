@@ -1,9 +1,21 @@
+if empty(glob('~/.vim/autoload/plug.vim'))
+  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+        \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+endif
+
 set wildignore+=.git,node_modules
-call plug#begin('~\vimfiles\plugged')
+
+if has("unix")
+  call plug#begin('~/.vim/plugged')
+else
+  call plug#begin('~\vimfiles\plugged')
+endif
 Plug 'scrooloose/nerdcommenter'
 Plug 'scrooloose/nerdtree'
 Plug 'tpope/vim-surround'
 Plug 'vim-syntastic/syntastic'
+" Install ruby-dev first
 Plug 'wincent/command-t', {
     \   'do': 'cd ruby/command-t/ext/command-t && ruby extconf.rb && make'
     \ }
@@ -48,8 +60,12 @@ let g:syntastic_check_on_wq = 0
 let g:syntastic_javascript_checkers=['eslint']
 "let g:syntastic_javascript_eslint_exe = 'npm run lint --'
 "
-color solarized
+syntax enable
+set background=dark
+" let g:solarized_termcolors=256
+colorscheme monokai
 set encoding=utf-8
+# color solarized
 
 " disable annoying audio bell
 set noerrorbells visualbell t_vb=
