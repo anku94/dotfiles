@@ -27,6 +27,7 @@ Plug 'valloric/youcompleteme'
 Plug 'tpope/vim-fugitive'
 Plug 'fatih/vim-go'
 Plug 'kana/vim-operator-user'
+Plug 'rking/ag.vim'
 Plug 'rhysd/vim-clang-format'
 call plug#end()
 
