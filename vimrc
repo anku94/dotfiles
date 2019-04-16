@@ -29,6 +29,8 @@ Plug 'fatih/vim-go'
 Plug 'kana/vim-operator-user'
 Plug 'rking/ag.vim'
 Plug 'rhysd/vim-clang-format'
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf.vim'
 call plug#end()
 
 if has("gui_running")
