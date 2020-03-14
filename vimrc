@@ -22,6 +22,7 @@ Plug 'wincent/command-t', {
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'altercation/vim-colors-solarized'
+Plug 'mechatroner/rainbow_csv'
 Plug 'crusoexia/vim-monokai'
 Plug 'valloric/youcompleteme'
 Plug 'tpope/vim-fugitive'
@@ -29,9 +30,15 @@ Plug 'fatih/vim-go'
 Plug 'kana/vim-operator-user'
 Plug 'rking/ag.vim'
 Plug 'rhysd/vim-clang-format'
+Plug 'google/vim-maktaba'
+Plug 'google/vim-codefmt'
+Plug 'google/vim-glaive'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
+Plug 'lervag/vimtex'
 call plug#end()
+
+call glaive#Install()
 
 if has("gui_running")
   " Set a nicer font.  set guifont=Consolas:h11:cDEFAULT
@@ -55,6 +62,9 @@ set statusline+=%*
 
 " Airline tab line
 let g:airline#extensions#tabline#enabled = 1
+
+let g:vimtex_view_method = 'skim'
+let g:tex_flavor = "latex"
 
 " let g:syntastic_always_populate_loc_list = 1
 " let g:syntastic_auto_loc_list = 1
