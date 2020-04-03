@@ -118,3 +118,5 @@ function! WindowSwapping()
 endfunction
 
 nnoremap <C-w>m :call WindowSwapping()<CR>
+
+let g:airline_powerline_fonts = 1
