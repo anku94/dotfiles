@@ -15,24 +15,41 @@ Plug 'scrooloose/nerdcommenter'
 Plug 'scrooloose/nerdtree'
 Plug 'tpope/vim-surround'
 " Plug 'vim-syntastic/syntastic'
-" Install ruby-dev first
-Plug 'wincent/command-t', {
-    \   'do': 'cd ruby/command-t/ext/command-t && ruby extconf.rb && make'
-    \ }
+" Install ruby-dev first, fuzzy file finder <Leader>t
+" We prefer fzf instead
+" Plug 'wincent/command-t', {
+    " \   'do': 'cd ruby/command-t/ext/command-t && ruby extconf.rb && make'
+    " \ }
+
+" Just visual enhancements
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'altercation/vim-colors-solarized'
-Plug 'mechatroner/rainbow_csv'
 Plug 'crusoexia/vim-monokai'
+
+" Probably don't use this
 Plug 'valloric/youcompleteme'
+" A git wrapper for vim, probably don't use this
 Plug 'tpope/vim-fugitive'
 Plug 'fatih/vim-go'
+" This is probably a dependency, maybe of codefmt?
 Plug 'kana/vim-operator-user'
 Plug 'rking/ag.vim'
 Plug 'rhysd/vim-clang-format'
+
+" these 3 are needed for codefmt
 Plug 'google/vim-maktaba'
-Plug 'google/vim-codefmt'
 Plug 'google/vim-glaive'
+Plug 'google/vim-codefmt'
+" This links with codefmt, not totally sure
+Plug 'Vimjas/vim-python-pep8-indent'
+
+Plug 'mechatroner/rainbow_csv'
+
+" Python REPL, <leader>W
+Plug 'sillybun/vim-repl'
+
+" Fuzzy finder, :Files/:Buffers etc
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'lervag/vimtex'
@@ -120,3 +137,16 @@ endfunction
 nnoremap <C-w>m :call WindowSwapping()<CR>
 
 let g:airline_powerline_fonts = 1
+
+" vim-repl
+let g:mapleader=' '
+let g:repl_position = 3
+nnoremap <leader>r :REPLToggle<Cr>
+nnoremap <leader>e :REPLSendSession<Cr>
+let g:repl_program = {
+            \   'python': 'ipython',
+            \   'default': 'zsh',
+            \   'r': 'R',
+            \   'lua': 'lua',
+            \   'vim': 'vim -e',
+            \   }
