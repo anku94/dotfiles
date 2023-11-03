@@ -27,15 +27,17 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'altercation/vim-colors-solarized'
 Plug 'crusoexia/vim-monokai'
 
-" Probably don't use this
-Plug 'valloric/youcompleteme'
+" Old, unused plugins
+" Plug 'valloric/youcompleteme'
+" Plug 'fatih/vim-go'
 " A git wrapper for vim, probably don't use this
-Plug 'tpope/vim-fugitive'
-Plug 'fatih/vim-go'
+" Plug 'tpope/vim-fugitive'
 " This is probably a dependency, maybe of codefmt?
 Plug 'kana/vim-operator-user'
-Plug 'rking/ag.vim'
+" Plug 'rking/ag.vim'
 Plug 'rhysd/vim-clang-format'
+Plug 'vim-scripts/DoxygenToolkit.vim'
+Plug 'Vimjas/vim-python-pep8-indent'
 
 " these 3 are needed for codefmt
 Plug 'google/vim-maktaba'
@@ -56,6 +58,8 @@ Plug 'lervag/vimtex'
 call plug#end()
 
 call glaive#Install()
+Glaive codefmt plugin[mappings]
+Glaive codefmt shfmt_executable="/users/ankushj/go/bin/shfmt"
 
 if has("gui_running")
   " Set a nicer font.  set guifont=Consolas:h11:cDEFAULT
