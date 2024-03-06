@@ -40,12 +40,23 @@ vim.g.mapleader = ' '
 vim.api.nvim_set_keymap('t', '<C-n>', '<C-w>N', {noremap = true})
 vim.api.nvim_set_keymap('t', '<ScrollWheelUp>', '<C-w>Nk', {noremap = true})
 vim.api.nvim_set_keymap('t', '<ScrollWheelDown>', '<C-w>Nj', {noremap = true})
+vim.api.nvim_set_keymap('t', '<Esc>', '<C-\\><C-n>', {noremap = true})
+
 
 -- Set clipboard to use the system clipboard
 vim.o.clipboard = 'unnamedplus'
 
 -- Enable mouse support
-vim.o.mouse = 'a'
+-- vim.o.mouse = 'a'
+-- nvim-tree setup (file navigation)
+-- disable netrw at the very start of your init.lua
+vim.g.loaded_netrw = 1
+vim.g.loaded_netrwPlugin = 1
+
+-- optionally enable 24-bit colour
+vim.opt.termguicolors = true
+require("nvim-tree").setup()
+
 
 -- Treesitter keybindings
 vim.keymap.set('n', '<leader>ts', ':TSPlaygroundToggle<CR>', { noremap = true, silent = true }) -- Toggle Treesitter playground
@@ -57,3 +68,20 @@ vim.keymap.set('n', '<leader>fg', '<cmd>Telescope live_grep<CR>', { noremap = tr
 vim.keymap.set('n', '<leader>fb', '<cmd>Telescope buffers<CR>', { noremap = true, silent = true }) -- List open buffers
 vim.keymap.set('n', '<leader>fh', '<cmd>Telescope help_tags<CR>', { noremap = true, silent = true }) -- Search help tags
 
+
+-- OSC52 bindings
+vim.keymap.set('n', '<leader>c', require('osc52').copy_operator, {expr = true})
+vim.keymap.set('n', '<leader>cc', '<leader>c_', {remap = true})
+vim.keymap.set('v', '<leader>c', require('osc52').copy_visual)
+
+require('osc52').setup {
+  max_length = 0,           -- Maximum length of selection (0 for no limit)
+  silent = false,           -- Disable message on successful copy
+  trim = false,             -- Trim surrounding whitespaces before copy
+  tmux_passthrough = false, -- Use tmux passthrough (requires tmux: set -g allow-passthrough on)
+}
+
+require('nvim-surround').setup {}
+
+vim.api.nvim_set_keymap('n', '<F2>', ':NvimTreeToggle<CR>', {noremap = true, silent = true})
+vim.api.nvim_set_keymap('n', '<F3>', ':NvimTreeOpen %:p:h<CR>', {noremap = true, silent = true})
