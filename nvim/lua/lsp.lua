@@ -19,18 +19,21 @@ lspconfig['clangd'].setup{
   capabilities = capabilities,
 }
 
+-- May require manual configuration for more formats here. Overrides null-ls
+lspconfig['efm'].setup{
+  init_options ={ documentFormatting = true },
+  settings = {
+    rootMarkers = { ".git/"},
+    languages = {
+      sh = {
+        { formatCommand = "shfmt -i 2", formatStdin = true },
+      }
+    }
+  }
+}
+
 require("mason-lspconfig").setup({
-  ensure_installed = { "pyright", "clangd", "bashls" },
-})
-
-local null_ls = require("null-ls")
-
-null_ls.setup({
-  debug = true,
-  sources = {
-    null_ls.builtins.formatting.shfmt,
-    null_ls.builtins.formatting.autopep8,
-  },
+  ensure_installed = { "pyright", "clangd", "bashls", "efm" },
 })
 
 -- Setup nvim-cmp.
