@@ -51,7 +51,10 @@ require('packer').startup(function()
     use 'nvim-tree/nvim-web-devicons'
 
     -- For formatters
-    use 'sbdchd/neoformat'
+    -- Should not need this, uncommented on 20240320
+    -- Replaced null-ls with efm for a formatting LSP
+    -- This is probably useless.
+    -- use 'sbdchd/neoformat'
 
     -- For nvim-surround
     use 'kylechui/nvim-surround'
