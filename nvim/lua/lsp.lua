@@ -3,59 +3,60 @@ require("mason").setup()
 local lspconfig = require('lspconfig')
 
 -- Setup lspconfig with updated capabilities.
-local capabilities = require('cmp_nvim_lsp').default_capabilities(vim.lsp.protocol.make_client_capabilities())
-capabilities.offsetEncoding = { "utf-16" }
+local capabilities = require('cmp_nvim_lsp').default_capabilities(vim.lsp
+                                                                      .protocol
+                                                                      .make_client_capabilities())
+capabilities.offsetEncoding = {"utf-16"}
 
 -- This setup will automatically use the server installed via Mason
-lspconfig['pyright'].setup {
+lspconfig['pyright'].setup {capabilities = capabilities}
+
+lspconfig['bashls'].setup {
   capabilities = capabilities,
+  setup = {bashIde = {loglevel = "debug"}}
 }
 
-lspconfig['bashls'].setup{
-  capabilities = capabilities,
-}
-
-lspconfig['clangd'].setup{
-  capabilities = capabilities,
-}
+lspconfig['clangd'].setup {capabilities = capabilities}
 
 -- May require manual configuration for more formats here. Overrides null-ls
-lspconfig['efm'].setup{
-  init_options ={ documentFormatting = true },
+lspconfig['efm'].setup {
+  init_options = {documentFormatting = true},
   settings = {
-    rootMarkers = { ".git/"},
+    rootMarkers = {".git/"},
     languages = {
-      sh = {
-        { formatCommand = "shfmt -i 2", formatStdin = true },
+      sh = {{formatCommand = "shfmt -i 2", formatStdin = true}},
+      python = {{formatCommand = "black --quiet -", formatStdin = true}},
+      lua = {
+        {
+          formatCommand = "lua-format --indent-width=2 --tab-width=2  --column-limit=80 -i",
+          formatStdin = true
+        }
       }
     }
   }
 }
 
 require("mason-lspconfig").setup({
-  ensure_installed = { "pyright", "clangd", "bashls", "efm" },
+  ensure_installed = {"pyright", "clangd", "bashls", "efm"}
 })
 
 -- Setup nvim-cmp.
-local cmp = require'cmp'
+local cmp = require 'cmp'
 
 cmp.setup({
   snippet = {
     expand = function(args)
       vim.fn["vsnip#anonymous"](args.body) -- For `vsnip` users.
-    end,
+    end
   },
   mapping = cmp.mapping.preset.insert({
     ['<C-b>'] = cmp.mapping.scroll_docs(-4),
     ['<C-f>'] = cmp.mapping.scroll_docs(4),
     ['<C-Space>'] = cmp.mapping.complete(),
     ['<C-e>'] = cmp.mapping.close(),
-    ['<CR>'] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item.
+    ['<CR>'] = cmp.mapping.confirm({select = true}) -- Accept currently selected item.
   }),
-  sources = cmp.config.sources({
-    { name = 'nvim_lsp' },
-    { name = 'buffer' },
-  })
+  sources = cmp.config.sources({{name = 'nvim_lsp'}, {name = 'buffer'}})
 })
 
 -- Global mappings.
@@ -75,7 +76,7 @@ vim.api.nvim_create_autocmd('LspAttach', {
 
     -- Buffer local mappings.
     -- See `:help vim.lsp.*` for documentation on any of the below functions
-    local opts = { buffer = ev.buf }
+    local opts = {buffer = ev.buf}
     vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, opts)
     vim.keymap.set('n', 'gd', vim.lsp.buf.definition, opts)
     vim.keymap.set('n', 'K', vim.lsp.buf.hover, opts)
@@ -88,10 +89,9 @@ vim.api.nvim_create_autocmd('LspAttach', {
     end, opts)
     vim.keymap.set('n', '<space>D', vim.lsp.buf.type_definition, opts)
     vim.keymap.set('n', '<space>rn', vim.lsp.buf.rename, opts)
-    vim.keymap.set({ 'n', 'v' }, '<space>ca', vim.lsp.buf.code_action, opts)
+    vim.keymap.set({'n', 'v'}, '<space>ca', vim.lsp.buf.code_action, opts)
     vim.keymap.set('n', 'gr', vim.lsp.buf.references, opts)
-    vim.keymap.set('n', '<space>f', function()
-      vim.lsp.buf.format { async = true }
-    end, opts)
-  end,
+    vim.keymap.set('n', '<space>f',
+                   function() vim.lsp.buf.format {async = true} end, opts)
+  end
 })

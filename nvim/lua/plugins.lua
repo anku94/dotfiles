@@ -1,61 +1,66 @@
 require('packer').startup(function()
-    -- Add your plugins here, for example:
-    -- use 'wbthomason/packer.nvim' -- Packer can manage itself
-    use 'wbthomason/packer.nvim'
+  -- Add your plugins here, for example:
+  -- use 'wbthomason/packer.nvim' -- Packer can manage itself
+  use 'wbthomason/packer.nvim'
 
-    -- for copy to clipboard support; inbuilt in newer neovim versions
-    use {'ojroques/nvim-osc52'}
+  -- for copy to clipboard support; inbuilt in newer neovim versions
+  use {'ojroques/nvim-osc52'}
 
-    use 'vim-airline/vim-airline'
-    use 'vim-airline/vim-airline-themes'
-    use 'altercation/vim-colors-solarized'
-    use 'tanvirtin/monokai.nvim' -- A monokai theme for Neovim
+  use 'vim-airline/vim-airline'
+  use 'vim-airline/vim-airline-themes'
+  use 'altercation/vim-colors-solarized'
+  use 'tanvirtin/monokai.nvim' -- A monokai theme for Neovim
 
-    -- Additional recommended plugins for Neovim
-    -- Treesitter for better syntax highlighting
-    use {'nvim-treesitter/nvim-treesitter', run = ':TSUpdate'}
+  -- Additional recommended plugins for Neovim
+  -- Treesitter for better syntax highlighting
+  use {'nvim-treesitter/nvim-treesitter', run = ':TSUpdate'}
 
-    -- Telescope for fuzzy finding (alternative to fzf)
-    use 'nvim-telescope/telescope.nvim'
+  use {
+    "nvim-treesitter/nvim-treesitter-textobjects",
+    requires = "nvim-treesitter/nvim-treesitter"
+  }
 
-    -- Native LSP support for language-specific features
-    use 'neovim/nvim-lspconfig'
-    -- Installer for LSPs
-    use 'williamboman/mason.nvim'
-    -- Collection of configurations for built-in LSP client
-    use 'williamboman/mason-lspconfig.nvim'
+  -- Telescope for fuzzy finding (alternative to fzf)
+  use 'nvim-telescope/telescope.nvim'
 
-    use 'github/copilot.vim'
+  -- Native LSP support for language-specific features
+  use 'neovim/nvim-lspconfig'
+  -- Installer for LSPs
+  use 'williamboman/mason.nvim'
+  -- Collection of configurations for built-in LSP client
+  use 'williamboman/mason-lspconfig.nvim'
 
-    use {
-        'numToStr/Comment.nvim',
-        config = function()
-            require('Comment').setup({mappings = {basic = true, extra = false}})
-        end
-    }
+  use 'github/copilot.vim'
 
-    use 'hrsh7th/nvim-cmp' -- The completion plugin
-    use 'hrsh7th/cmp-nvim-lsp' -- LSP source for nvim-cmp
-    use 'hrsh7th/cmp-buffer' -- Buffer completions
-    use 'hrsh7th/cmp-path' -- Path completions
-    use 'hrsh7th/vim-vsnip' -- Snippet engine
+  use {
+    'numToStr/Comment.nvim',
+    config = function()
+      require('Comment').setup({mappings = {basic = true, extra = false}})
+    end
+  }
 
-    use 'nvim-lua/plenary.nvim'
-    use 'jose-elias-alvarez/null-ls.nvim'
+  use 'hrsh7th/nvim-cmp' -- The completion plugin
+  use 'hrsh7th/cmp-nvim-lsp' -- LSP source for nvim-cmp
+  use 'hrsh7th/cmp-buffer' -- Buffer completions
+  use 'hrsh7th/cmp-path' -- Path completions
+  use 'hrsh7th/vim-vsnip' -- Snippet engine
 
-    -- For Vim REPL
-    use 'Vigemus/iron.nvim'
+  use 'nvim-lua/plenary.nvim'
+  use 'jose-elias-alvarez/null-ls.nvim'
 
-    -- For pretty file tree
-    use "nvim-tree/nvim-tree.lua"
-    use 'nvim-tree/nvim-web-devicons'
+  -- For Vim REPL
+  use 'Vigemus/iron.nvim'
 
-    -- For formatters
-    -- Should not need this, uncommented on 20240320
-    -- Replaced null-ls with efm for a formatting LSP
-    -- This is probably useless.
-    -- use 'sbdchd/neoformat'
+  -- For pretty file tree
+  use "nvim-tree/nvim-tree.lua"
+  use 'nvim-tree/nvim-web-devicons'
 
-    -- For nvim-surround
-    use 'kylechui/nvim-surround'
+  -- For formatters
+  -- Should not need this, uncommented on 20240320
+  -- Replaced null-ls with efm for a formatting LSP
+  -- This is probably useless.
+  -- use 'sbdchd/neoformat'
+
+  -- For nvim-surround
+  use 'kylechui/nvim-surround'
 end)
