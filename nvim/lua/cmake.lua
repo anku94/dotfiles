@@ -8,8 +8,8 @@ vim.api.nvim_create_autocmd('FileType', {
     callback = function()
         -- Check if the file name is exactly 'CMakeLists.txt'
         if vim.fn.expand('%:t') == 'CMakeLists.txt' then
-            vim.opt_local.tabstop = 4
-            vim.opt_local.shiftwidth = 4
+            vim.opt_local.tabstop = 2
+            vim.opt_local.shiftwidth = 2
         end
     end,
 })

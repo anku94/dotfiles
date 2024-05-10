@@ -7,6 +7,7 @@ end
 require('plugins')
 require('treesitter')
 require('lsp')
+require('cmp')
 require('repl')
 require('misc')
 require('cmake')

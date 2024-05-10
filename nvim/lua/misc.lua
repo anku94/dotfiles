@@ -93,3 +93,6 @@ vim.api.nvim_set_keymap('n', '<F3>', ':NvimTreeOpen %:p:h<CR>',
 -- Set Ctrl+F as the new leader for window commands (bc Win10 doesnt like Ctlr+W)
 vim.api.nvim_set_keymap('n', '<C-c>', '<C-w>', {noremap = true, silent = true})
 
+vim.g.coq_settings = {
+  auto_start = 'shut-up',  -- Automatically start coq, but silently
+}

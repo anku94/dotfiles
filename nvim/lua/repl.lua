@@ -20,15 +20,15 @@ iron.setup {
   -- Iron doesn't set keymaps by default anymore.
   -- You can set them here or manually add keymaps to the functions in iron.core
   keymaps = {
-    send_motion = "<space>sc",
+    send_motion = "<space>sm",
     visual_send = "<space>sc",
     send_file = "<space>sf",
     send_line = "<space>sl",
     send_until_cursor = "<space>su",
-    send_mark = "<space>sm",
-    mark_motion = "<space>mc",
-    mark_visual = "<space>mc",
-    remove_mark = "<space>md",
+    -- send_mark = "<space>sm",
+    -- mark_motion = "<space>mc",
+    -- mark_visual = "<space>mc",
+    -- remove_mark = "<space>md",
     cr = "<space>s<cr>",
     interrupt = "<space>s<space>",
     exit = "<space>sq",

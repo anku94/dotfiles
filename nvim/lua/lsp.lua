@@ -1,16 +1,18 @@
 require("mason").setup()
 
 local lspconfig = require('lspconfig')
+local coq = require('coq')
 
 -- Setup lspconfig with updated capabilities.
-local capabilities = require('cmp_nvim_lsp').default_capabilities(vim.lsp
-                                                                      .protocol
-                                                                      .make_client_capabilities())
+local capabilities = vim.lsp.protocol.make_client_capabilities()
+capabilities = coq.lsp_ensure_capabilities(capabilities)
+-- local capabilities = require('cmp_nvim_lsp').default_capabilities(vim.lsp
+--                                                                       .protocol
+--                                                                       .make_client_capabilities())
 capabilities.offsetEncoding = {"utf-16"}
 
 -- This setup will automatically use the server installed via Mason
 lspconfig['pyright'].setup {capabilities = capabilities}
-
 lspconfig['bashls'].setup {
   capabilities = capabilities,
   setup = {bashIde = {loglevel = "debug"}}
@@ -20,7 +22,9 @@ lspconfig['clangd'].setup {capabilities = capabilities}
 
 -- May require manual configuration for more formats here. Overrides null-ls
 lspconfig['efm'].setup {
+  -- cmd = { "efm-langserver", "-c", "/users/ankushj/repos/dotfiles/style/efm-langserver.yaml" },
   init_options = {documentFormatting = true},
+  filetypes = {"sh", "python", "lua", "cmake"},
   settings = {
     rootMarkers = {".git/"},
     languages = {
@@ -31,6 +35,12 @@ lspconfig['efm'].setup {
           formatCommand = "lua-format --indent-width=2 --tab-width=2  --column-limit=80 -i",
           formatStdin = true
         }
+      },
+      cmake = {
+        {
+          formatCommand = "cmake-format - ",
+          formatStdin = true
+        }
       }
     }
   }
@@ -38,25 +48,6 @@ lspconfig['efm'].setup {
 
 require("mason-lspconfig").setup({
   ensure_installed = {"pyright", "clangd", "bashls", "efm"}
-})
-
--- Setup nvim-cmp.
-local cmp = require 'cmp'
-
-cmp.setup({
-  snippet = {
-    expand = function(args)
-      vim.fn["vsnip#anonymous"](args.body) -- For `vsnip` users.
-    end
-  },
-  mapping = cmp.mapping.preset.insert({
-    ['<C-b>'] = cmp.mapping.scroll_docs(-4),
-    ['<C-f>'] = cmp.mapping.scroll_docs(4),
-    ['<C-Space>'] = cmp.mapping.complete(),
-    ['<C-e>'] = cmp.mapping.close(),
-    ['<CR>'] = cmp.mapping.confirm({select = true}) -- Accept currently selected item.
-  }),
-  sources = cmp.config.sources({{name = 'nvim_lsp'}, {name = 'buffer'}})
 })
 
 -- Global mappings.

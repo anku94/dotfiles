@@ -30,7 +30,7 @@ require('packer').startup(function()
   -- Collection of configurations for built-in LSP client
   use 'williamboman/mason-lspconfig.nvim'
 
-  use 'github/copilot.vim'
+  use { 'github/copilot.vim' }
 
   use {
     'numToStr/Comment.nvim',
@@ -39,14 +39,19 @@ require('packer').startup(function()
     end
   }
 
-  use 'hrsh7th/nvim-cmp' -- The completion plugin
-  use 'hrsh7th/cmp-nvim-lsp' -- LSP source for nvim-cmp
-  use 'hrsh7th/cmp-buffer' -- Buffer completions
-  use 'hrsh7th/cmp-path' -- Path completions
-  use 'hrsh7th/vim-vsnip' -- Snippet engine
+  use { 'hrsh7th/nvim-cmp', cond = false } -- The completion plugin
+  use { 'hrsh7th/cmp-nvim-lsp', cond = false } -- LSP source for nvim-cmp
+  use { 'hrsh7th/cmp-buffer', cond = false } -- Buffer completions
+  use { 'hrsh7th/cmp-path', cond = false } -- Path completions
+  use { 'hrsh7th/vim-vsnip', cond = false } -- Snippet engine
 
+  use { 'ms-jpq/coq_nvim', branch = 'coq' }
+  use { 'ms-jpq/coq.artifacts', branch = 'artifacts' }
+  use { 'ms-jpq/coq.thirdparty', branch = '3p' }
+
+  --
   use 'nvim-lua/plenary.nvim'
-  use 'jose-elias-alvarez/null-ls.nvim'
+  -- use 'jose-elias-alvarez/null-ls.nvim'
 
   -- For Vim REPL
   use 'Vigemus/iron.nvim'
