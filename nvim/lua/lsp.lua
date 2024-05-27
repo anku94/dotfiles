@@ -2,7 +2,14 @@ require("mason").setup()
 
 local lspconfig = require('lspconfig')
 local coq = require('coq')
+local navic = require("nvim-navic")
 
+local navic_on_attach = function(client, bufnr)
+  if client.server_capabilities.documentSymbolProvider then
+    navic.attach(client, bufnr)
+  end
+end
+--
 -- Setup lspconfig with updated capabilities.
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities = coq.lsp_ensure_capabilities(capabilities)
@@ -18,7 +25,12 @@ lspconfig['bashls'].setup {
   setup = {bashIde = {loglevel = "debug"}}
 }
 
-lspconfig['clangd'].setup {capabilities = capabilities}
+lspconfig['clangd'].setup {
+  capabilities = capabilities,
+  on_attach = function(client, bufnr)
+    navic.attach(client, bufnr)
+  end
+}
 
 -- May require manual configuration for more formats here. Overrides null-ls
 lspconfig['efm'].setup {
@@ -36,12 +48,7 @@ lspconfig['efm'].setup {
           formatStdin = true
         }
       },
-      cmake = {
-        {
-          formatCommand = "cmake-format - ",
-          formatStdin = true
-        }
-      }
+      cmake = {{formatCommand = "cmake-format - ", formatStdin = true}}
     }
   }
 }
@@ -84,5 +91,14 @@ vim.api.nvim_create_autocmd('LspAttach', {
     vim.keymap.set('n', 'gr', vim.lsp.buf.references, opts)
     vim.keymap.set('n', '<space>f',
                    function() vim.lsp.buf.format {async = true} end, opts)
+
+    -- Enable inlay hints if supported by client; return if not
+    local id = vim.tbl_get(ev, 'data', 'client_id')
+    local client = id and vim.lsp.get_client_by_id(id)
+    if client == nil or not client.supports_method('textDocument/inlayHints') then
+      return
+    end
+
+    vim.lsp.inlay_hint.enable(true, {bufnr = ev.buf})
   end
 })
