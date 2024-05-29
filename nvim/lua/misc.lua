@@ -98,10 +98,3 @@ vim.g.coq_settings = {
 }
 
 require('ibl').setup {}
-
--- Set colors for rainbow-csv from highlight groups
-vim.g.rcsv_colorlinks = {
-  'Type', 'Character', 'NONE', 'Constant', 'Number', 'Conditional', 'Question',
-  'CursorLineNr', 'ModeMsg'
-}
-

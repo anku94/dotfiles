@@ -4,6 +4,7 @@ local lspconfig = require('lspconfig')
 local lsp_utils = require('lsp_util')
 local coq = require('coq')
 local navic = require("nvim-navic")
+local navboddy = require("nvim-navbuddy")
 
 local navic_on_attach = function(client, bufnr)
   if client.server_capabilities.documentSymbolProvider then
@@ -20,7 +21,14 @@ capabilities = coq.lsp_ensure_capabilities(capabilities)
 capabilities.offsetEncoding = {"utf-16"}
 
 -- This setup will automatically use the server installed via Mason
-lspconfig['pyright'].setup {capabilities = capabilities, settings = lsp_utils.get_pyright_settings()}
+lspconfig['pyright'].setup {capabilities = capabilities,
+  on_attach = function(client, bufnr)
+    navic.attach(client, bufnr)
+    navboddy.attach(client, bufnr)
+  end,
+  settings = lsp_utils.get_pyright_settings()
+}
+
 lspconfig['bashls'].setup {
   capabilities = capabilities,
   setup = {bashIde = {loglevel = "debug"}}
@@ -30,6 +38,7 @@ lspconfig['clangd'].setup {
   capabilities = capabilities,
   on_attach = function(client, bufnr)
     navic.attach(client, bufnr)
+    navboddy.attach(client, bufnr)
   end
 }
 

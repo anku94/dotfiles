@@ -42,22 +42,14 @@ require('packer').startup(function()
     end
   }
 
-  -- use { 'hrsh7th/nvim-cmp', cond = false } -- The completion plugin
-  -- use { 'hrsh7th/cmp-nvim-lsp', cond = false } -- LSP source for nvim-cmp
-  -- use { 'hrsh7th/cmp-buffer', cond = false } -- Buffer completions
-  -- use { 'hrsh7th/cmp-path', cond = false } -- Path completions
-  -- use { 'hrsh7th/vim-vsnip', cond = false } -- Snippet engine
-
   use {'ms-jpq/coq_nvim', branch = 'coq'}
   use {'ms-jpq/coq.artifacts', branch = 'artifacts'}
   use {'ms-jpq/coq.thirdparty', branch = '3p'}
 
   --
   use 'nvim-lua/plenary.nvim'
-  -- use 'jose-elias-alvarez/null-ls.nvim'
 
   -- For Vim REPL
-  -- use { 'Vigemus/iron.nvim', tag = '7f876ee' }
   use {'Vigemus/iron.nvim'}
 
   -- For pretty file tree
@@ -65,10 +57,6 @@ require('packer').startup(function()
   use 'nvim-tree/nvim-web-devicons'
 
   -- For formatters
-  -- Should not need this, uncommented on 20240320
-  -- Replaced null-ls with efm for a formatting LSP
-  -- This is probably useless.
-  -- use 'sbdchd/neoformat'
 
   -- For nvim-surround
   use 'kylechui/nvim-surround'
@@ -77,16 +65,18 @@ require('packer').startup(function()
   use 'lukas-reineke/indent-blankline.nvim'
 
   -- For CSVs
+  vim.g.rcsv_colorlinks = {
+    'Type', 'Character', 'NONE', 'Constant', 'Number', 'Conditional',
+    'Question', 'CursorLineNr', 'ModeMsg'
+  }
+
   use {
     'cameron-wags/rainbow_csv.nvim',
-    config = function()
-      vim.g.rcsv_colorlinks = {
-        'String', 'String', 'NONE', 'Special', 'Identifier', 'Type', 'Question',
-        'CursorLineNr', 'ModeMsg', 'Title'
-      }
-      require'rainbow_csv'.setup()
-    end,
     -- optional lazy-loading below
+    config = function()
+      -- Set colors for rainbow-csv from highlight groups
+      require('rainbow_csv').setup()
+    end,
     module = {'rainbow_csv', 'rainbow_csv.fns'},
     ft = {
       'csv', 'tsv', 'csv_semicolon', 'csv_whitespace', 'csv_pipe', 'rfc_csv',
@@ -104,9 +94,25 @@ require('packer').startup(function()
       "SmiteshP/nvim-navic", "nvim-tree/nvim-web-devicons" -- optional dependency
     },
     after = "nvim-web-devicons",
-    config = function()
-      require("barbecue").setup()
-    end
+    config = function() require("barbecue").setup() end
   })
+
+  use {
+    "SmiteshP/nvim-navbuddy",
+    requires = {
+      "neovim/nvim-lspconfig", "SmiteshP/nvim-navic", "MunifTanjim/nui.nvim",
+      "numToStr/Comment.nvim", -- Optional
+      "nvim-telescope/telescope.nvim" -- Optional
+    }
+  }
+
+  use {
+    "folke/which-key.nvim",
+    config = function()
+      vim.o.timeout = true
+      vim.o.timeoutlen = 300
+      require("which-key").setup {}
+    end
+  }
 end)
 
