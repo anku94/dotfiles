@@ -34,6 +34,7 @@ vim.g.airline_powerline_fonts = 1
 
 -- vim-repl leader key
 vim.g.mapleader = ' '
+vim.g.maplocalleader = 'f'
 
 -- Terminal mode mappings for scrolling and entering terminal-normal mode
 vim.api.nvim_set_keymap('t', '<C-n>', '<C-w>N', {noremap = true})
@@ -107,3 +108,7 @@ end
 
 vim.api.nvim_set_keymap('n', '<F4>', ':lua ToggleInlayHints()<CR>',
                         {noremap = true, silent = true})
+-- vimtex
+vim.g.vimtex_view_method = 'skim'
+vim.g.vimtex_view_skim_sync = 1
+vim.g.vimtex_view_skim_activate = 1

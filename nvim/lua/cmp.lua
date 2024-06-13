@@ -20,5 +20,6 @@
 --
 require("coq_3p"){
   { src = "copilot", short_name = "COP", accept_key = "<c-f>" },
-  { src = "nvimlua", short_name = "nLUA" }
+  { src = "nvimlua", short_name = "nLUA" },
+  { src = "vimtex", short_name = "vTEX" }
 }
