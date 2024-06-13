@@ -56,22 +56,6 @@ vim.g.loaded_netrwPlugin = 1
 vim.opt.termguicolors = true
 require("nvim-tree").setup()
 
--- Treesitter keybindings
-vim.keymap.set('n', '<leader>ts', ':TSPlaygroundToggle<CR>',
-               {noremap = true, silent = true}) -- Toggle Treesitter playground
-vim.keymap.set('n', '<leader>th', ':TSHighlightCapturesUnderCursor<CR>',
-               {noremap = true, silent = true}) -- Highlight Treesitter captures under cursor
-
--- Telescope keybindings
-vim.keymap.set('n', '<leader>ff', '<cmd>Telescope find_files<CR>',
-               {noremap = true, silent = true}) -- Find files
-vim.keymap.set('n', '<leader>fg', '<cmd>Telescope live_grep<CR>',
-               {noremap = true, silent = true}) -- Live grep
-vim.keymap.set('n', '<leader>fb', '<cmd>Telescope buffers<CR>',
-               {noremap = true, silent = true}) -- List open buffers
-vim.keymap.set('n', '<leader>fh', '<cmd>Telescope help_tags<CR>',
-               {noremap = true, silent = true}) -- Search help tags
-
 -- OSC52 bindings
 vim.keymap.set('n', '<leader>c', require('osc52').copy_operator, {expr = true})
 vim.keymap.set('n', '<leader>cc', '<leader>c_', {remap = true})
@@ -81,7 +65,7 @@ require('osc52').setup {
   max_length = 0, -- Maximum length of selection (0 for no limit)
   silent = false, -- Disable message on successful copy
   trim = false, -- Trim surrounding whitespaces before copy
-  tmux_passthrough = false -- Use tmux passthrough (requires tmux: set -g allow-passthrough on)
+  tmux_passthrough = true -- Use tmux passthrough (requires tmux: set -g allow-passthrough on)
 }
 
 require('nvim-surround').setup {}
