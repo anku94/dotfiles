@@ -98,3 +98,12 @@ vim.g.coq_settings = {
 }
 
 require('ibl').setup {}
+
+-- Inlay hint toggle
+local inlay_hints_enabled = true
+function ToggleInlayHints()
+  vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())
+end
+
+vim.api.nvim_set_keymap('n', '<F4>', ':lua ToggleInlayHints()<CR>',
+                        {noremap = true, silent = true})
