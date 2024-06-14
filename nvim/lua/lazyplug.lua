@@ -81,10 +81,9 @@ require("lazy").setup({
   {
     'cameron-wags/rainbow_csv.nvim',
     config = function()
-      vim.g.rcsv_colorlinks = {
-        'String', 'String', 'NONE', 'Special', 'Identifier', 'Type', 'Question',
-        'CursorLineNr', 'ModeMsg', 'Title'
-      }
+      vim.g.rcsv_colorlinks = 
+      { 'String', 'Comment', 'NONE', 'Conditional', 'PreProc', 'Type', 'Question', 'CursorLineNr',
+          'ModeMsg', 'Title' }
       require('rainbow_csv').setup()
     end,
     lazy = true,
