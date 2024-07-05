@@ -1,0 +1,26 @@
+diff --git a/lua/coq/completion.lua b/lua/coq/completion.lua
+index 944ade5d..f059ce9c 100644
+--- a/lua/coq/completion.lua
++++ b/lua/coq/completion.lua
+@@ -1,7 +1,21 @@
++-- define a function that checks the value of
++-- vim.g.coq_settings.completion.always (each intermediate lookup can be nill)
++local function coq_enabled()
++  local always = vim.g.coq_settings
++  if always and always.completion and always.completion.always then
++    return true
++  end
++  return false
++end
++
+ (function(...)
+   COQ.send_comp = function(col, items)
+     vim.schedule(
+       function()
++        if not coq_enabled() then
++          return
++        end
++
+         local legal_modes = {
+           ["i"] = true,
+           ["ic"] = true,

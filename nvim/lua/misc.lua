@@ -79,7 +79,9 @@ vim.api.nvim_set_keymap('n', '<F3>', ':NvimTreeOpen %:p:h<CR>',
 vim.api.nvim_set_keymap('n', '<C-c>', '<C-w>', {noremap = true, silent = true})
 
 vim.g.coq_settings = {
-  auto_start = 'shut-up' -- Automatically start coq, but silently
+  completion = {
+    always = false,
+  },
 }
 
 require('ibl').setup {}
