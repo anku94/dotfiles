@@ -101,3 +101,6 @@ vim.g.vimtex_view_skim_activate = 1
 
 vim.g.copilot_filetypes = {tex = false}
 
+vim.g.coq_settings = { 
+  completion = { always = false }
+}

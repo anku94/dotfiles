@@ -44,23 +44,9 @@ lspconfig['clangd'].setup {
 
 -- May require manual configuration for more formats here. Overrides null-ls
 lspconfig['efm'].setup {
-  -- cmd = { "efm-langserver", "-c", "/users/ankushj/repos/dotfiles/style/efm-langserver.yaml" },
+  cmd = { "efm-langserver", "-logfile", "/tmp/efm.log", "-loglevel", "5"},
   init_options = {documentFormatting = true},
   filetypes = {"sh", "python", "lua", "cmake"},
-  settings = {
-    rootMarkers = {".git/"},
-    languages = {
-      sh = {{formatCommand = "shfmt -i 2", formatStdin = true}},
-      python = {{formatCommand = "black --quiet -", formatStdin = true}},
-      lua = {
-        {
-          formatCommand = "lua-format --indent-width=2 --tab-width=2  --column-limit=80 -i",
-          formatStdin = true
-        }
-      },
-      cmake = {{formatCommand = "cmake-format - ", formatStdin = true}}
-    }
-  }
 }
 
 require("mason-lspconfig").setup({
