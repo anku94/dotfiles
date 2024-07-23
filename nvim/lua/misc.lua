@@ -80,7 +80,7 @@ vim.api.nvim_set_keymap('n', '<C-c>', '<C-w>', {noremap = true, silent = true})
 
 vim.g.coq_settings = {
   completion = {
-    always = false,
+    always = true,
   },
 }
 
@@ -100,7 +100,3 @@ vim.g.vimtex_view_skim_sync = 1
 vim.g.vimtex_view_skim_activate = 1
 
 vim.g.copilot_filetypes = {tex = false}
-
-vim.g.coq_settings = { 
-  completion = { always = false }
-}
