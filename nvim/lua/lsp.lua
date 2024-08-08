@@ -35,6 +35,7 @@ lspconfig['bashls'].setup {
 }
 
 lspconfig['clangd'].setup {
+  cmd = { "clangd", "--enable-config" },
   capabilities = capabilities,
   on_attach = function(client, bufnr)
     navic.attach(client, bufnr)
@@ -44,7 +45,7 @@ lspconfig['clangd'].setup {
 
 -- May require manual configuration for more formats here. Overrides null-ls
 lspconfig['efm'].setup {
-  cmd = { "efm-langserver", "-logfile", "/tmp/efm.log", "-loglevel", "5"},
+  -- cmd = { "efm-langserver", "-logfile", "/tmp/efm.log", "-loglevel", "5"},
   init_options = {documentFormatting = true},
   filetypes = {"sh", "python", "lua", "cmake"},
 }
