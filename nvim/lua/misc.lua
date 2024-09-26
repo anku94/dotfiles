@@ -101,3 +101,21 @@ vim.g.vimtex_view_skim_sync = 1
 vim.g.vimtex_view_skim_activate = 1
 
 vim.g.copilot_filetypes = {tex = false}
+
+-- resize everything when window is resized
+vim.api.nvim_create_autocmd("VimResized", {
+    pattern = "*",
+    callback = function()
+      vim.cmd("wincmd =")
+      local total_height = vim.o.lines
+      local quickfix_height = math.floor(total_height * 0.15)
+      -- clip quickfix_height to the range 5-10
+      quickfix_height = math.max(5, math.min(10, quickfix_height))
+
+      local quickfix_open = vim.fn.getqflist({winid = 0}).winid > 0
+      if quickfix_open then
+        vim.cmd("copen " .. quickfix_height)
+      end
+    end,
+    desc = "automatically resize windows"
+})
