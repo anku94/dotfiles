@@ -43,40 +43,45 @@ local function apply_patch(plugin)
   vim.fn.system(cmd)
 end
 
-function toggle_coq()
-  -- vim.g.coq_settings.completion.always =
-  --     not vim.g.coq_settings.completion.always
-  --
-  -- https://github.com/neovim/neovim/issues/12544
-  -- need to update entire dict
+-- https://github.com/neovim/neovim/issues/12544
+-- need to update entire dict
+local function enable_coq()
   local settings = vim.g.coq_settings
-  settings.completion.always = not settings.completion.always
+  settings.completion.always = true
   vim.g.coq_settings = settings
+end
 
-  if settings.completion.always then
-    vim.notify("Coq enabled.")
-  else
+local function disable_coq()
+  local settings = vim.g.coq_settings
+  settings.completion.always = false
+  vim.g.coq_settings = settings
+end
+
+local function toggle_coq()
+  if vim.g.coq_settings.completion.always then
+    disable_coq()
     vim.notify("Coq disabled.")
+  else
+    enable_coq()
+    vim.notify("Coq enabled.")
   end
 end
 
 function disable_coq_for(seconds)
-  local settings = vim.g.coq_settings
-  settings.completion.always = not settings.completion.always
-  vim.g.coq_settings = settings
-
-  local status_str = settings.completion.always and "enabled" or "disabled"
-  local msg = "Coq " .. status_str .. " for " .. seconds .. " seconds."
-  vim.notify(msg)
-
+  disable_coq()
+  vim.notify("Coq disabled for " .. seconds .. " seconds.")
   vim.defer_fn(function()
-    local settings = vim.g.coq_settings
-    settings.completion.always = not settings.completion.always
-    vim.g.coq_settings = settings
+    enable_coq()
+    vim.notify("Coq enabled.")
+  end, seconds * 1000)
+end
 
-    local status_str = settings.completion.always and "enabled" or "disabled"
-    local msg = "Coq " .. status_str
-    vim.notify(msg)
+function enable_coq_for(seconds)
+  enable_coq()
+  vim.notify("Coq enabled for " .. seconds .. " seconds.")
+  vim.defer_fn(function()
+    disable_coq()
+    vim.notify("Coq disabled.")
   end, seconds * 1000)
 end
 
@@ -101,5 +106,8 @@ vim.api.nvim_create_autocmd('User', {
 --                         {noremap = true, silent = false})
 
 vim.api.nvim_set_keymap('n', '<F5>', '<cmd>lua toggle_coq()<cr>',
+                        {noremap = true, silent = false})
+
+vim.api.nvim_set_keymap('n', '<F6>', '<cmd>lua enable_coq_for(30)<cr>',
                         {noremap = true, silent = false})
 

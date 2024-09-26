@@ -80,6 +80,7 @@ vim.api.nvim_set_keymap('n', '<C-c>', '<C-w>', {noremap = true, silent = true})
 
 vim.g.coq_settings = {
   completion = {
+    -- must be true here, because this value gets cached
     always = true,
   },
 }
