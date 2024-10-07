@@ -1,0 +1,69 @@
+diff --git a/runcoms/zpreztorc b/runcoms/zpreztorc
+index 9a3c19a..a98f83a 100644
+--- a/runcoms/zpreztorc
++++ b/runcoms/zpreztorc
+@@ -30,10 +30,21 @@ zstyle ':prezto:*:*' color 'yes'
+ # Set the Prezto modules to load (browse modules).
+ # The order matters.
+ zstyle ':prezto:load' pmodule \
++  'autosuggestions' \
++  'command-not-found' \
++  'directory' \
++  'docker' \
+   'environment' \
++  'git' \
++  'history-substring-search' \
+   'terminal' \
+   'editor' \
+   'history' \
++  'python' \
++  'ssh' \
++  'syntax-highlighting' \
++  'terminal' \
++  'tmux' \
+   'directory' \
+   'spectrum' \
+   'utility' \
+diff --git a/runcoms/zshrc b/runcoms/zshrc
+index 039b882..3d9501f 100644
+--- a/runcoms/zshrc
++++ b/runcoms/zshrc
+@@ -11,3 +11,38 @@ if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
+ fi
+ 
+ # Customize to your needs...
++
++[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
++
++# function findstr() {
++  # maxdepth=""
++  # if [ "$#" -eq 2 ]; then
++    # maxdepth="-maxdepth $2"
++  # fi
++
++  # find . `echo $maxdepth` -exec grep "$1" {} /dev/null \; 2>&1 | grep -v directory | grep -v matches
++# }
++
++export LD_PRELOAD="/users/ankushj/repos/stderred/build/libstderred.so${LD_PRELOAD:+:$LD_PRELOAD}"
++
++# export PATH="/users/ankushj/.pyenv/bin:$PATH"
++# eval "$(pyenv init -)"
++# eval "$(pyenv virtualenv-init -)"
++
++# alias pssh=parallel-ssh
++
++# >>> conda initialize >>>
++# !! Contents within this block are managed by 'conda init' !!
++# __conda_setup="$('/users/ankushj/miniconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
++# if [ $? -eq 0 ]; then
++    # eval "$__conda_setup"
++# else
++    # if [ -f "/users/ankushj/miniconda3/etc/profile.d/conda.sh" ]; then
++        # . "/users/ankushj/miniconda3/etc/profile.d/conda.sh"
++    # else
++        # export PATH="/users/ankushj/miniconda3/bin:$PATH"
++    # fi
++# fi
++# unset __conda_setup
++# <<< conda initialize <<<
++

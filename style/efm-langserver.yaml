@@ -19,5 +19,5 @@ languages:
     - format-command: 'black -' # or black --quiet -
       format-stdin: true
   lua:
-    - format-command: 'lua-format --indent-width=2 --tab-width=2 --column-limit=80 -i'
+    - format-command: '~/.luarocks/bin/lua-format --indent-width=2 --tab-width=2 --column-limit=80 -i'
       format-stdin: true
