@@ -80,10 +80,10 @@ vim.api.nvim_set_keymap('n', '<C-c>', '<C-w>', {noremap = true, silent = true})
 
 vim.g.coq_settings = {
   completion = {
-    -- must be true here, because this value gets cached
-    always = true
+    always = false
   },
-  keymap = {manual_complete = "<C-G>"}
+  -- C-G works with a delay, C-Space works instantly
+  keymap = {manual_complete = "<C-Space>"}
 }
 
 require('ibl').setup {}
@@ -122,3 +122,7 @@ vim.api.nvim_create_autocmd("VimResized", {
   end,
   desc = "automatically resize windows"
 })
+
+-- Set <leader>nn to :Navbuddy
+vim.api.nvim_set_keymap('n', '<leader>nn', ':Navbuddy<CR>',
+                        {noremap = true, silent = true})

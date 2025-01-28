@@ -91,5 +91,6 @@ require("lazy").setup({
         desc = "Buffer Local Keymaps (which-key)"
       }
     }
-  }, {'lervag/vimtex', lazy = false, init = function() end}
+  }
+  , {'lervag/vimtex', lazy = false, init = function() end}
 })

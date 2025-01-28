@@ -45,13 +45,21 @@ lspconfig['clangd'].setup {
 
 -- May require manual configuration for more formats here. Overrides null-ls
 lspconfig['efm'].setup {
-  -- cmd = { "efm-langserver", "-logfile", "/tmp/efm.log", "-loglevel", "5"},
+  -- cmd = { "efm-langserver", "-logfile", "/tmp/efm.log", "-loglevel", "10"},
   init_options = {documentFormatting = true},
-  filetypes = {"sh", "python", "lua", "cmake"},
+  filetypes = {"sh", "python", "lua", "cmake", "tex"},
+}
+
+lspconfig['rust_analyzer'].setup {
+  capabilities = capabilities,
+  on_attach = function(client, bufnr)
+    navic.attach(client, bufnr)
+    navboddy.attach(client, bufnr)
+  end
 }
 
 require("mason-lspconfig").setup({
-  ensure_installed = {"pyright", "clangd", "bashls", "efm"}
+  ensure_installed = {"pyright", "clangd", "bashls", "efm", "rust_analyzer"},
 })
 
 -- Global mappings.

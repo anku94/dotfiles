@@ -1,7 +1,7 @@
 require'nvim-treesitter.configs'.setup {
   -- A list of parser names, or "all" (the five listed parsers should always be installed)
   ensure_installed = {
-    "c", "lua", "vim", "vimdoc", "query", "python", "cpp", "bash"
+    "c", "lua", "vim", "vimdoc", "query", "python", "cpp", "bash", "rust", "toml"
   },
 
   -- Install parsers synchronously (only applied to `ensure_installed`)
@@ -28,7 +28,7 @@ require'nvim-treesitter.configs'.setup {
     -- Or use a function for more flexibility, 
     -- e.g. to disable slow treesitter highlight for large files
     disable = function(lang, buf)
-      local disable_langs = {"rust", "csv"}
+      local disable_langs = {"csv"}
       if vim.tbl_contains(disable_langs, lang) then return true end
 
       local max_filesize = 100 * 1024 -- 100 KB
