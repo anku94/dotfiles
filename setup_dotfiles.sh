@@ -153,7 +153,7 @@ setup_dotfiles() {
   echo "\nChecking for existing softlinks..."
 
   for file in "${(k)DOTFILES_MAP[@]}"; do
-    echo "\n-INFO- Checking $file"
+    echo "\n" "-INFO- Checking $file"
     # if file does not exist at source
     if [ ! -e "$file" ]; then
       echo "   !!!! File does not exist at $file"
