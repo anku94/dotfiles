@@ -47,7 +47,7 @@ lspconfig['clangd'].setup {
 lspconfig['efm'].setup {
   -- cmd = { "efm-langserver", "-logfile", "/tmp/efm.log", "-loglevel", "10"},
   init_options = {documentFormatting = true},
-  filetypes = {"sh", "python", "lua", "cmake", "tex"},
+  filetypes = {"sh", "python", "lua", "cmake", "tex", "bib"},
 }
 
 lspconfig['rust_analyzer'].setup {

@@ -54,6 +54,7 @@ require'nvim-treesitter.configs'.setup {
         ["af"] = "@function.outer",
         ["if"] = "@function.inner",
         ["ac"] = "@class.outer",
+        ["as"] = "@struct.outer",
         -- You can optionally set descriptions to the mappings (used in the desc parameter of
         -- nvim_buf_set_keymap) which plugins like which-key display
         ["ic"] = {

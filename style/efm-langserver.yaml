@@ -3,28 +3,31 @@ root-markers:
   - .git/
 tools:
   cmake-format: &cmake-format
-    format-command: 'cmake-format -i'
+    format-command: "cmake-format -i"
     format-stdin: true
   sh-shfmt: &sh-shfmt
-    format-command: 'shfmt -i 3'
+    format-command: "shfmt -i 3"
     format-stdin: true
   latex-format: &latex-format
-    format-command: '/Library/TeX/texbin/latexindent -m -l -'
+    format-command: "/Library/TeX/texbin/latexindent -m -l -"
     format-stdin: true
 languages:
   # make sure to also update lspconfig.filetypes in neovim settings
   cmake:
     - <<: *cmake-format
   sh:
-    - format-command: 'shfmt -i 2'
+    - format-command: "shfmt -i 2"
       format-stdin: true
   python:
     # - format-command: 'black -' # or black --quiet -
     #   format-stdin: true
-    - format-command: 'yapf -p'
+    - format-command: "yapf -p"
       format-stdin: true
   lua:
-    - format-command: '~/.luarocks/bin/lua-format --indent-width=2 --tab-width=2 --column-limit=80 -i'
+    - format-command: "~/.luarocks/bin/lua-format --indent-width=2 --tab-width=2 --column-limit=80 -i"
       format-stdin: true
   tex:
     - <<: *latex-format
+  # bib:
+  #   - formatCommand: "biber --tool --output_format=bibtex --output_resolve"
+  #     formatStdin: false
