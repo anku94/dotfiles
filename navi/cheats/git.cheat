@@ -1,0 +1,647 @@
+% git, git-basics
+
+# [g] Git command
+git
+
+% git, git-flow
+
+# [gFi] Git flow init
+git flow init
+
+# [gFf] Git flow feature
+git flow feature
+
+# [gFfc] Git flow feature checkout
+git flow feature checkout
+
+# [gFfd] Git flow feature diff
+git flow feature diff
+
+# [gFff] Git flow feature finish
+git flow feature finish
+
+# [gFfl] Git flow feature list
+git flow feature list
+
+# [gFfm] Git flow feature pull
+git flow feature pull
+
+# [gFfp] Git flow feature publish
+git flow feature publish
+
+# [gFfr] Git flow feature rebase
+git flow feature rebase
+
+# [gFfs] Git flow feature start
+git flow feature start
+
+# [gFft] Git flow feature track
+git flow feature track
+
+# [gFfx] Git flow feature delete
+git flow feature delete
+
+# [gFb] Git flow bugfix
+git flow bugfix
+
+# [gFbc] Git flow bugfix checkout
+git flow bugfix checkout
+
+# [gFbd] Git flow bugfix diff
+git flow bugfix diff
+
+# [gFbf] Git flow bugfix finish
+git flow bugfix finish
+
+# [gFbl] Git flow bugfix list
+git flow bugfix list
+
+# [gFbm] Git flow bugfix pull
+git flow bugfix pull
+
+# [gFbp] Git flow bugfix publish
+git flow bugfix publish
+
+# [gFbr] Git flow bugfix rebase
+git flow bugfix rebase
+
+# [gFbs] Git flow bugfix start
+git flow bugfix start
+
+# [gFbt] Git flow bugfix track
+git flow bugfix track
+
+# [gFbx] Git flow bugfix delete
+git flow bugfix delete
+
+# [gFh] Git flow hotfix
+git flow hotfix
+
+# [gFhc] Git flow hotfix checkout
+git flow hotfix checkout
+
+# [gFhd] Git flow hotfix diff
+git flow hotfix diff
+
+# [gFhf] Git flow hotfix finish
+git flow hotfix finish
+
+# [gFhl] Git flow hotfix list
+git flow hotfix list
+
+# [gFhm] Git flow hotfix pull
+git flow hotfix pull
+
+# [gFhp] Git flow hotfix publish
+git flow hotfix publish
+
+# [gFhr] Git flow hotfix rebase
+git flow hotfix rebase
+
+# [gFhs] Git flow hotfix start
+git flow hotfix start
+
+# [gFht] Git flow hotfix track
+git flow hotfix track
+
+# [gFhx] Git flow hotfix delete
+git flow hotfix delete
+
+# [gFl] Git flow release
+git flow release
+
+# [gFlc] Git flow release checkout
+git flow release checkout
+
+# [gFld] Git flow release diff
+git flow release diff
+
+# [gFlf] Git flow release finish
+git flow release finish
+
+# [gFll] Git flow release list
+git flow release list
+
+# [gFlm] Git flow release pull
+git flow release pull
+
+# [gFlp] Git flow release publish
+git flow release publish
+
+# [gFlr] Git flow release rebase
+git flow release rebase
+
+# [gFls] Git flow release start
+git flow release start
+
+# [gFlt] Git flow release track
+git flow release track
+
+# [gFlx] Git flow release delete
+git flow release delete
+
+# [gFs] Git flow support
+git flow support
+
+# [gFsc] Git flow support checkout
+git flow support checkout
+
+# [gFsd] Git flow support diff
+git flow support diff
+
+# [gFsf] Git flow support finish
+git flow support finish
+
+# [gFsl] Git flow support list
+git flow support list
+
+# [gFsm] Git flow support pull
+git flow support pull
+
+# [gFsp] Git flow support publish
+git flow support publish
+
+# [gFsr] Git flow support rebase
+git flow support rebase
+
+# [gFss] Git flow support start
+git flow support start
+
+# [gFst] Git flow support track
+git flow support track
+
+# [gFsx] Git flow support delete
+git flow support delete
+
+% git, git-remote
+
+# [gR] Git remote
+git remote
+
+# [gRa] Git remote add
+git remote add
+
+# [gRb] Git hub browse
+git-hub-browse
+
+# [gRl] Git remote verbose list
+git remote --verbose
+
+# [gRm] Git remote rename
+git remote rename
+
+# [gRp] Git remote prune
+git remote prune
+
+# [gRs] Git remote show
+git remote show
+
+# [gRu] Git remote update
+git remote update
+
+# [gRx] Git remote remove
+git remote rm
+
+% git, git-submodule
+
+# [gS] Git submodule
+git submodule
+
+# [gSI] Git submodule update with init and recursive
+git submodule update --init --recursive
+
+# [gSa] Git submodule add
+git submodule add
+
+# [gSf] Git submodule foreach
+git submodule foreach
+
+# [gSi] Git submodule init
+git submodule init
+
+# [gSl] Git submodule status
+git submodule status
+
+# [gSm] Git submodule move
+git-submodule-move
+
+# [gSs] Git submodule sync
+git submodule sync
+
+# [gSu] Git submodule update remote recursive
+git submodule update --remote --recursive
+
+# [gSx] Git submodule remove
+git-submodule-remove
+
+% git, git-branch
+
+# [gb] Git branch
+git branch
+
+# [gbD] Git branch force delete
+git branch --delete --force
+
+# [gbL] Git branch all verbose
+git branch --all --verbose
+
+# [gbM] Git branch force move
+git branch --move --force
+
+# [gbR] Git branch force move (alias)
+git branch --move --force
+
+# [gbS] Git show-branch all
+git show-branch --all
+
+# [gbV] Git branch very verbose
+git branch --verbose --verbose
+
+# [gbX] Git branch force delete (alias)
+git branch --delete --force
+
+# [gba] Git branch all verbose
+git branch --all --verbose
+
+# [gbc] Git checkout new branch
+git checkout -b
+
+# [gbd] Git branch delete
+git branch --delete
+
+# [gbl] Git branch verbose
+git branch --verbose
+
+# [gbm] Git branch move
+git branch --move
+
+# [gbr] Git branch move (alias)
+git branch --move
+
+# [gbs] Git show-branch
+git show-branch
+
+# [gbv] Git branch verbose (alias)
+git branch --verbose
+
+# [gbx] Git branch delete (alias)
+git branch --delete
+
+% git, git-commit
+
+# [gc] Git commit verbose
+git commit --verbose
+
+# [gcF] Git commit amend verbose
+git commit --verbose --amend
+
+# [gcFS] Git commit amend verbose signed
+git commit --verbose --amend --gpg-sign
+
+# [gcO] Git checkout patch
+git checkout --patch
+
+# [gcP] Git cherry-pick no commit
+git cherry-pick --no-commit
+
+# [gcR] Git reset HEAD^
+git reset "HEAD^"
+
+# [gcS] Git commit verbose signed
+git commit --verbose --gpg-sign
+
+# [gcY] Git cherry verbose
+git cherry --verbose
+
+# [gca] Git commit all verbose
+git commit --verbose --all
+
+# [gcaS] Git commit all verbose signed
+git commit --verbose --all --gpg-sign
+
+# [gcam] Git commit all with message
+git commit --all --message
+
+# [gcf] Git commit amend reuse message
+git commit --amend --reuse-message HEAD
+
+# [gcfS] Git commit amend reuse message signed
+git commit --amend --reuse-message HEAD --gpg-sign
+
+# [gcl] Git commit lost
+git-commit-lost
+
+# [gcm] Git commit with message
+git commit --message
+
+# [gcmS] Git commit with message signed
+git commit --message --gpg-sign
+
+# [gco] Git checkout
+git checkout
+
+# [gcp] Git cherry-pick fast-forward
+git cherry-pick --ff
+
+# [gcr] Git revert
+git revert
+
+# [gcs] Git show
+git show
+
+# [gcsS] Git show signed
+git show --pretty=short --show-signature
+
+# [gcy] Git cherry verbose abbreviated
+git cherry --verbose --abbrev
+
+% git, git-files
+
+# [gd] Git list files
+git ls-files
+
+# [gdc] Git list cached files
+git ls-files --cached
+
+# [gdi] Git list ignored files
+git status --porcelain --short --ignored | sed -n "s/^!! //p"
+
+# [gdk] Git list killed files
+git ls-files --killed
+
+# [gdm] Git list modified files
+git ls-files --modified
+
+# [gdu] Git list untracked files
+git ls-files --other --exclude-standard
+
+# [gdx] Git list deleted files
+git ls-files --deleted
+
+% git, git-fetch
+
+# [gf] Git fetch
+git fetch
+
+# [gfa] Git fetch all
+git fetch --all
+
+# [gfc] Git clone
+git clone
+
+# [gfcr] Git clone with submodules
+git clone --recurse-submodules
+
+# [gfm] Git pull
+git pull
+
+# [gfma] Git pull autostash
+git pull --autostash
+
+# [gfr] Git pull rebase
+git pull --rebase
+
+# [gfra] Git pull rebase autostash
+git pull --rebase --autostash
+
+% git, git-grep
+
+# [gg] Git grep
+git grep
+
+# [ggL] Git grep without matches
+git grep --files-without-matches
+
+# [ggi] Git grep ignore case
+git grep --ignore-case
+
+# [ggl] Git grep with matches
+git grep --files-with-matches
+
+# [ggv] Git grep invert match
+git grep --invert-match
+
+# [ggw] Git grep word regexp
+git grep --word-regexp
+
+% git, git-index
+
+# [giA] Git add patch
+git add --patch
+
+# [giD] Git diff cached word diff
+git diff --no-ext-diff --cached --word-diff
+
+# [giI] Git update index no assume unchanged
+git update-index --no-assume-unchanged
+
+# [giR] Git reset patch
+git reset --patch
+
+# [giX] Git remove force cached recursive
+git rm -r --force --cached
+
+# [gia] Git add
+git add
+
+# [gid] Git diff cached
+git diff --no-ext-diff --cached
+
+# [gii] Git update index assume unchanged
+git update-index --assume-unchanged
+
+# [gir] Git reset
+git reset
+
+# [giu] Git add updated
+git add --update
+
+# [gix] Git remove cached recursive
+git rm -r --cached
+
+% git, git-log
+
+# [gl] Git log with medium format
+git log --topo-order --pretty=format:"$_git_log_medium_format"
+
+# [glS] Git log show signature
+git log --show-signature
+
+# [glb] Git log with brief format
+git log --topo-order --pretty=format:"$_git_log_brief_format"
+
+# [glc] Git shortlog summary numbered
+git shortlog --summary --numbered
+
+# [gld] Git log with full diff
+git log --topo-order --stat --patch --full-diff --pretty=format:"$_git_log_medium_format"
+
+# [glg] Git log with graph
+git log --topo-order --graph --pretty=format:"$_git_log_oneline_format"
+
+# [glo] Git log oneline format
+git log --topo-order --pretty=format:"$_git_log_oneline_format"
+
+# [gls] Git log with stats
+git log --topo-order --stat --pretty=format:"$_git_log_medium_format"
+
+% git, git-merge
+
+# [gm] Git merge
+git merge
+
+# [gmC] Git merge no commit
+git merge --no-commit
+
+# [gmF] Git merge no fast forward
+git merge --no-ff
+
+# [gma] Git merge abort
+git merge --abort
+
+# [gmt] Git mergetool
+git mergetool
+
+% git, git-push
+
+# [gp] Git push
+git push
+
+# [gpA] Git push all and tags
+git push --all && git push --tags
+
+# [gpF] Git push force
+git push --force
+
+# [gpa] Git push all
+git push --all
+
+# [gpc] Git push set upstream current branch
+git push --set-upstream origin "$(git-branch-current 2> /dev/null)"
+
+# [gpf] Git push force with lease
+git push --force-with-lease
+
+# [gpp] Git pull and push current branch
+git pull origin "$(git-branch-current 2> /dev/null)" && git push origin "$(git-branch-current 2> /dev/null)"
+
+# [gpt] Git push tags
+git push --tags
+
+% git, git-rebase
+
+# [gr] Git rebase
+git rebase
+
+# [gra] Git rebase abort
+git rebase --abort
+
+# [grc] Git rebase continue
+git rebase --continue
+
+# [gri] Git rebase interactive
+git rebase --interactive
+
+# [grs] Git rebase skip
+git rebase --skip
+
+% git, git-stash
+
+# [gs] Git stash
+git stash
+
+# [gsL] Git stash dropped
+git-stash-dropped
+
+# [gsS] Git stash patch
+git stash save --patch --no-keep-index
+
+# [gsX] Git stash clear interactive
+git-stash-clear-interactive
+
+# [gsa] Git stash apply
+git stash apply
+
+# [gsd] Git stash show with details
+git stash show --patch --stat
+
+# [gsl] Git stash list
+git stash list
+
+# [gsp] Git stash pop
+git stash pop
+
+# [gsr] Git stash recover
+git-stash-recover
+
+# [gss] Git stash save with untracked
+git stash save --include-untracked
+
+# [gsw] Git stash save untracked and keep index
+git stash save --include-untracked --keep-index
+
+# [gsx] Git stash drop
+git stash drop
+
+% git, git-tag
+
+# [gt] Git tag
+git tag
+
+# [gtl] Git tag list
+git tag --list
+
+# [gts] Git tag sign
+git tag --sign
+
+# [gtv] Git verify tag
+git verify-tag
+
+% git, git-workspace
+
+# [gwC] Git clean force
+git clean --force
+
+# [gwD] Git diff word diff
+git diff --no-ext-diff --word-diff
+
+# [gwR] Git reset hard
+git reset --hard
+
+# [gwS] Git status ignore submodules
+git status --ignore-submodules=$_git_status_ignore_submodules
+
+# [gwX] Git remove force recursive
+git rm -r --force
+
+# [gwc] Git clean dry run
+git clean --dry-run
+
+# [gwd] Git diff
+git diff --no-ext-diff
+
+# [gwr] Git reset soft
+git reset --soft
+
+# [gws] Git status short ignore submodules
+git status --ignore-submodules=$_git_status_ignore_submodules --short
+
+# [gwx] Git remove recursive
+git rm -r
+
+% git, git-conflict
+
+# [gCa] Git add conflicted files
+git add $(gCl)
+
+# [gCe] Git mergetool for conflicted files
+git mergetool $(gCl)
+
+# [gCl] Git list conflicted files
+git --no-pager diff --name-only --diff-filter=U
+
+# [gCo] Git checkout ours for conflicts
+git checkout --ours --
+
+# [gCt] Git checkout theirs for conflicts
+git checkout --theirs --
