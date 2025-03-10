@@ -1,0 +1,31 @@
+% quarto, docs, pdf
+
+# Check Quarto installation and dependencies
+quarto check
+
+# Create a new Quarto project
+quarto create-project <project_name>
+
+# Render a document to PDF
+quarto render <file.qmd> --to pdf
+
+# Render to HTML
+quarto render <file.qmd> --to html
+
+# Preview a Quarto document in a browser
+quarto preview <file.qmd>
+
+# Convert Quarto to LaTeX output
+quarto render <file.qmd> --to latex
+
+# List available formats for rendering
+quarto formats
+
+# Create a Quarto website
+quarto create-project --type website <project_name>
+
+# Upgrade Quarto to the latest version
+quarto upgrade
+
+# Install a Quarto extension
+quarto install extension <extension_name>
