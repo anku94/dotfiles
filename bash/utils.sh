@@ -17,7 +17,7 @@ llmcat() {
 };
 
 # Export so it's available in subshells
-export -f llmcat &> /dev/null
+# export -f llmcat &> /dev/null
 
 cops() {
 	FUNCNAME="$funcstack[1]"
