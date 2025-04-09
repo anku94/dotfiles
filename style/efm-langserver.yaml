@@ -24,7 +24,8 @@ languages:
     - format-command: "yapf -p"
       format-stdin: true
   lua:
-    - format-command: "~/.luarocks/bin/lua-format --indent-width=2 --tab-width=2 --column-limit=80 -i"
+    - format-command: "stylua --search-parent-directories --stdin-filepath ${INPUT} -"
+      # format-command: "~/.luarocks/bin/lua-format --indent-width=2 --tab-width=2 --column-limit=80 -i"
       format-stdin: true
   tex:
     - <<: *latex-format

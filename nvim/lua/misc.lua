@@ -102,7 +102,7 @@ vim.g.vimtex_view_method = 'skim'
 vim.g.vimtex_view_skim_sync = 1
 vim.g.vimtex_view_skim_activate = 1
 
-vim.g.copilot_filetypes = {tex = false}
+-- vim.g.copilot_filetypes = {tex = false}
 
 vim.keymap.set('i', '<C-F>', 'copilot#Accept("\\<CR>")',
                {expr = true, replace_keycodes = false})
@@ -127,3 +127,10 @@ vim.api.nvim_create_autocmd("VimResized", {
 -- Set <leader>nn to :Navbuddy
 vim.api.nvim_set_keymap('n', '<leader>nn', ':Navbuddy<CR>',
                         {noremap = true, silent = true})
+
+-- Telescope
+local builtin = require('telescope.builtin')
+vim.keymap.set('n', '<leader>ff', builtin.find_files, { desc = 'Telescope find files' })
+vim.keymap.set('n', '<leader>fg', builtin.live_grep, { desc = 'Telescope live grep' })
+vim.keymap.set('n', '<leader>fb', builtin.buffers, { desc = 'Telescope buffers' })
+vim.keymap.set('n', '<leader>fh', builtin.help_tags, { desc = 'Telescope help tags' })
