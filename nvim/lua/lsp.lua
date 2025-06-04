@@ -119,17 +119,17 @@ end
 -- end
 
 -- Efm LSP config --
-local efm_conf = {
-    cmd = {"efm-langserver", "-logfile", "/tmp/efm.log", "-loglevel", "10"},
-    init_options = {
-        documentFormatting = true
-    },
-    filetypes = {"sh", "python", "lua", "cmake", "tex", "bib", "lua"}
-}
-if lspconfig["efm"] then
-    lspconfig["efm"].setup(efm_conf)
-end
-
+-- local efm_conf = {
+--     cmd = {"efm-langserver", "-logfile", "/tmp/efm.log", "-loglevel", "10"},
+--     init_options = {
+--         documentFormatting = true
+--     },
+--     filetypes = {"sh", "python", "lua", "cmake", "tex", "bib", "lua"}
+-- }
+-- if lspconfig["efm"] then
+--     lspconfig["efm"].setup(efm_conf)
+-- end
+--
 -- Rust Analyzer LSP config --
 local rust_analyzer_conf = {
     capabilities = capabilities,
@@ -155,7 +155,8 @@ conform.setup(conform_conf)
 
 -- Mason LSP config --
 local mason_lspconfig_conf = {
-    ensure_installed = {"pyright", "clangd", "bashls", "efm", "rust_analyzer", "jsonnet_ls", "lua_ls"}
+    -- ensure_installed = {"pyright", "clangd", "bashls", "efm", "rust_analyzer", "jsonnet_ls", "lua_ls"}
+    ensure_installed = {"pyright", "clangd", "bashls", "rust_analyzer", "lua_ls"}
 }
 require("mason-lspconfig").setup(mason_lspconfig_conf)
 
