@@ -20,6 +20,7 @@ DOTFILES_MAP=(
 # Initialize DRYRUN flag
 DRYRUN=0
 
+# dotfiles root dir
 REPO_ROOT=$(git rev-parse --show-toplevel)
 
 message() {
@@ -51,6 +52,7 @@ check_requirements() {
   fi
 }
 
+# Call this function early to check for required commands
 check_requirements
 
 # Add this function to determine the preferred shell
@@ -81,6 +83,13 @@ if [ "$REPO_ROOT" != "$SCRIPT_DIR" ]; then
   exit 1
 fi
 
+# download_file: download a file from a URL using wget or curl
+# - Skips download if file already exists and SHA256 matches
+# - Uses: $DOWNLOAD_DIR is used as the download directory
+# - Uses: $DRYRUN to determine if it should actually download
+# - Integrity check is done using SHA256 if provided
+# @param url: The URL to download from
+# @param dest: The destination file path
 download_file() {
   local url=$1
   local dest=$2
@@ -119,6 +128,10 @@ download_file() {
   fi
 }
 
+# assert_integrity: verify file integrity using SHA256
+# @param file: The file to check
+# @param expected_sha256: The expected SHA256 hash of the file
+# Calls exit 1 if check fails
 assert_integrity() {
   local file=$1
   local expected_sha256=$2
@@ -144,6 +157,11 @@ assert_integrity() {
   fi
 }
 
+# add_to_path: Add a binary directory to $PATH
+# @param binary: The name of the binary to add
+# @param binary_dir: The directory containing the binary (default: $DOWNLOAD_DIR)
+# If DRYRUN is set, it will only print what it would do
+# Uses: $SHELL_CONFIG is used to determine the shell rc file
 add_to_path() {
   local binary=$1
   local binary_dir=${2:-"$DOWNLOAD_DIR"}
@@ -176,6 +194,10 @@ add_to_path() {
 }
 
 # Function to backup and copy tmux.conf
+# setup_tmux_conf: Copies $REPO_ROOT/tmux.conf to $HOME/.tmux.conf
+# Takes no args, prompts to backup exist .tmux.conf
+# Also sets preferred shell in tmux.conf
+# Respects $DRYRUN
 setup_tmux_conf() {
   local src="$REPO_ROOT/tmux.conf"
   local dest="$HOME/.tmux.conf"
@@ -326,8 +348,37 @@ setup_neovim_macos() {
   add_to_path "nvim" "$extracted_dir/bin"
 }
 
-run_osx_navi() {
-  message "\n-INFO- navi cheatsheet setup. TODO"
+# setup_navi: Sets up navi cheatsheet and config file
+# Uses $OSTYPE to determine the platform
+setup_navi() {
+  message "navi cheatsheet setup."
+
+  local navi_cfgdir="$HOME/.config/navi"
+
+  # Check if $OSTYPE begins with linux
+  if [[ "$OSTYPE" == "linux-gnu"* ]]; then
+    message "Setting up navi for Linux using cargo"
+    run_cmd "cargo install --locked navi" "Installing navi via cargo"
+  elif [[ "$OSTYPE" == "darwin"* ]]; then
+    message "Setting up navi for MacOS using brew"
+    run_cmd "brew install navi" "Installing navi via Homebrew"
+  else
+    message "-ERROR- Unsupported OS type: $OSTYPE"
+    return 1
+  fi
+
+  message "-INFO- Writing navi config to $navi_cfgdir/config.yaml"
+  if [ $DRYRUN -eq 1 ]; then
+    message "Would create navi config directory and file"
+    return
+  fi
+
+  mkdir -p "$navi_cfgdir"
+  cat <<EOF > "$navi_cfgdir/config.yaml"
+cheats:
+  paths:
+    - $REPO_ROOT/navi
+EOF
 }
 
 # Add this function near the top of your script
@@ -348,7 +399,10 @@ run_cmd() {
 # Array to store aliases
 declare -a ALIASES=()
 
-# Function to add an alias
+# add_alias: adds an alias to ALIASES
+# Takes two arguments: alias_name and alias_command
+# Collected aliases must be written explicitly via write_aliases()
+# Respects $DRYRUN
 add_alias() {
   local alias_name="$1"
   local alias_command="$2"
@@ -363,7 +417,9 @@ add_alias() {
   fi
 }
 
-# Function to write all aliases to the shell config file
+# write_aliases: Writes all collected aliases from $ALIASES
+# Writes to $SHELL_CONFIG
+# Respects $DRYRUN
 write_aliases() {
   if [ ${#ALIASES[@]} -eq 0 ]; then
     message "No aliases to write"
@@ -408,6 +464,8 @@ write_aliases() {
 install_mac_utilities() {
   run_cmd "brew install fd tmux the_silver_searcher tree findutils" "Installing utilities"
   run_cmd "sudo launchctl load -w /System/Library/LaunchDaemons/com.apple.locate.plist" "Setting up locate database"
+
+  setup_navi
 
   # Add some useful aliases for Mac
   add_alias "ll" "ls -la"
