@@ -148,7 +148,6 @@ local conform_conf = {
         sh = {"shfmt"},
         python = {"black"},
         lua = {"stylua"},
-        cmake = {"cmake-format"},
         jsonnet = {"jsonnetfmt"}
     }
 }

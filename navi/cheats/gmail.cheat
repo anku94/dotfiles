@@ -1,0 +1,90 @@
+% gmail, gmail-triage
+
+# select conversation  
+[x]
+
+# select all  
+[*] then [a]
+
+# deselect all  
+[*] then [n]
+
+# label
+[l]
+
+# undo  
+[z]
+
+# show shortcuts  
+[?]
+
+# archive  
+[e]
+
+# delete  
+[#]
+
+# reply  
+[r]
+
+# reply all  
+[a]
+
+# forward  
+[f]
+
+# mark spam  
+[!]
+
+# more actions  
+[v]
+
+# star toggle  
+[s]
+
+# mark important  
+[+]
+
+# mark not important  
+[-]
+
+# archive & next  
+[y] then [o]
+
+# inbox  
+[g] then [i]
+
+# starred  
+[g] then [s]
+
+# sent mail  
+[g] then [t]
+
+# drafts  
+[g] then [d]
+
+# all mail  
+[g] then [a]
+
+# tasks  
+[g] then [k]
+
+# search  
+[/]
+
+# refresh  
+[u]
+
+# next email  
+[j]
+
+# prev email  
+[k]
+
+# open email  
+[o] or [Enter]
+
+# settings menu  
+[,]  (comma)
+
+w to

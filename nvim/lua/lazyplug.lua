@@ -29,7 +29,9 @@ require("lazy").setup({
   {'neovim/nvim-lspconfig'}, -- Installer for LSPs
   {'williamboman/mason.nvim'},
   -- Collection of configurations for built-in LSP client
-  {'williamboman/mason-lspconfig.nvim'}, {'github/copilot.vim'}, {
+  {'williamboman/mason-lspconfig.nvim'}, 
+  {'github/copilot.vim'}, 
+  {
     'numToStr/Comment.nvim',
     config = function()
       require('Comment').setup({mappings = {basic = true, extra = false}})
