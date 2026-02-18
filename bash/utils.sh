@@ -1,20 +1,34 @@
+# llmcat: new implementation, more robust
 llmcat() {
-  local template_start="<filename>"
-  local template_mid="</filename>\n<filecontents>\n"
-  local template_end="\n</filecontents>\n"
-  
-  if [ $# -eq 0 ]; then
-    # No arguments, read from stdin (for piping)
-    while IFS= read -r file; do
-      echo -e "${template_start}${file}${template_mid}$(cat "$file")${template_end}"
-    done
-  else
-    # Arguments provided, process them directly
-    for file in "$@"; do
-      echo -e "${template_start}${file}${template_mid}$(cat "$file")${template_end}"
-    done
-  fi
-};
+    local file
+    if [[ $# -eq 0 ]]; then
+        # Read filenames from stdin
+        while IFS= read -r file; do
+            [[ -z "$file" ]] && continue
+            _llmcat_one "$file"
+        done
+    else
+        for file in "$@"; do
+            _llmcat_one "$file"
+        done
+    fi
+}
+
+# _llmcat_one: Helper function to process a single file
+_llmcat_one() {
+    local file="$1"
+    if [[ "$file" == "-" ]]; then
+        file="/dev/stdin"
+    elif [[ ! -r "$file" ]]; then
+        echo "llmcat: cannot read '$file'" >&2
+        return 1
+    fi
+    printf '<filename>%s</filename>\n<filecontents>\n' "$file"
+    cat "$file"
+    printf '\n</filecontents>\n'
+}
+
+
 
 # Export so it's available in subshells
 # export -f llmcat &> /dev/null
